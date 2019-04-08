@@ -1835,6 +1835,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _ref;
 
     return _ref = {
+      role: localStorage.getItem('role'),
       logoutDialog: false,
       drawer: true,
       mini: false,
@@ -36152,53 +36153,59 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c(
-                "v-list-tile",
-                {
-                  on: {
-                    click: function($event) {
-                      return _vm.routerGoto("UserManager")
-                    }
-                  }
-                },
-                [
-                  _c(
-                    "v-list-tile-action",
-                    [_c("v-icon", [_vm._v("group ")])],
-                    1
-                  ),
-                  _c(
-                    "v-list-tile-content",
-                    [_c("v-list-tile-title", [_vm._v("Menejemen Peserta")])],
+              _vm.role == "admin"
+                ? _c(
+                    "v-list-tile",
+                    {
+                      on: {
+                        click: function($event) {
+                          return _vm.routerGoto("UserManager")
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "v-list-tile-action",
+                        [_c("v-icon", [_vm._v("group ")])],
+                        1
+                      ),
+                      _c(
+                        "v-list-tile-content",
+                        [
+                          _c("v-list-tile-title", [_vm._v("Menejemen Peserta")])
+                        ],
+                        1
+                      )
+                    ],
                     1
                   )
-                ],
-                1
-              ),
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "v-list-tile",
-                {
-                  on: {
-                    click: function($event) {
-                      return _vm.routerGoto("QuizManager")
-                    }
-                  }
-                },
-                [
-                  _c(
-                    "v-list-tile-action",
-                    [_c("v-icon", [_vm._v("group ")])],
-                    1
-                  ),
-                  _c(
-                    "v-list-tile-content",
-                    [_c("v-list-tile-title", [_vm._v("Menejemen Kuis")])],
+              _vm.role == "admin"
+                ? _c(
+                    "v-list-tile",
+                    {
+                      on: {
+                        click: function($event) {
+                          return _vm.routerGoto("QuizManager")
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "v-list-tile-action",
+                        [_c("v-icon", [_vm._v("group ")])],
+                        1
+                      ),
+                      _c(
+                        "v-list-tile-content",
+                        [_c("v-list-tile-title", [_vm._v("Menejemen Kuis")])],
+                        1
+                      )
+                    ],
                     1
                   )
-                ],
-                1
-              ),
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "v-list-tile",

@@ -32,8 +32,8 @@
       <v-list class="pt-0" dense>
         <v-divider light></v-divider>
         <v-list-tile @click="routerGoto('changePassword')"><v-list-tile-action><v-icon>dashboard</v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Home</v-list-tile-title></v-list-tile-content></v-list-tile>
-        <v-list-tile @click="routerGoto('UserManager')"><v-list-tile-action><v-icon>group </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Menejemen Peserta</v-list-tile-title></v-list-tile-content></v-list-tile>
-        <v-list-tile @click="routerGoto('QuizManager')"><v-list-tile-action><v-icon>group </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Menejemen Kuis</v-list-tile-title></v-list-tile-content></v-list-tile>
+        <v-list-tile @click="routerGoto('UserManager')" v-if="role == 'admin'"><v-list-tile-action><v-icon>group </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Menejemen Peserta</v-list-tile-title></v-list-tile-content></v-list-tile>
+        <v-list-tile @click="routerGoto('QuizManager')" v-if="role == 'admin'"><v-list-tile-action><v-icon>group </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Menejemen Kuis</v-list-tile-title></v-list-tile-content></v-list-tile>
         <v-list-tile @click="routerGoto('Quiz')"><v-list-tile-action><v-icon>group </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Kuis</v-list-tile-title></v-list-tile-content></v-list-tile>
         <v-list-tile @click="routerGoto('changePassword')"><v-list-tile-action><v-icon>lock </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Password</v-list-tile-title></v-list-tile-content></v-list-tile>
         <v-list-tile @click="routerGoto('logoutDialog')"><v-list-tile-action><v-icon>power_settings_new </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Keluar</v-list-tile-title></v-list-tile-content></v-list-tile>
@@ -67,6 +67,7 @@
     },
     data () {
       return {
+        role: localStorage.getItem('role'),
         logoutDialog: false,
         drawer: true,
         mini: false,

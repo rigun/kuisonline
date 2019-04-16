@@ -5,7 +5,9 @@
   <div class="background-all"></div>
     <v-toolbar :class="{'sideActive': mini, 'sideDeactive':!mini, 'sideToggle':!drawer}" class="toolbarFixed">
         <v-toolbar-side-icon  @click.stop="showSide()"></v-toolbar-side-icon>
-        <v-toolbar-title>Title</v-toolbar-title>
+        <v-toolbar-title>
+            <img src="/images/logo atma bg terang.png" alt="logo atma jaya" style="width: 225px;">
+        </v-toolbar-title>
     </v-toolbar>
     <v-navigation-drawer
       v-model="drawer"
@@ -23,7 +25,7 @@
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            <v-list-tile-title>John Leider</v-list-tile-title>
+            <v-list-tile-title>{{username}} </v-list-tile-title>
           </v-list-tile-content>
 
         </v-list-tile>
@@ -31,10 +33,11 @@
 
       <v-list class="pt-0" dense>
         <v-divider light></v-divider>
-        <v-list-tile @click="routerGoto('changePassword')"><v-list-tile-action><v-icon>dashboard</v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Home</v-list-tile-title></v-list-tile-content></v-list-tile>
+        <v-list-tile @click="routerGoto('DashboardContent')"><v-list-tile-action><v-icon>dashboard</v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Home</v-list-tile-title></v-list-tile-content></v-list-tile>
+        <v-list-tile @click="routerGoto('manageCase')" v-if="role == 'admin'"><v-list-tile-action><v-icon>description</v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Manajemen Soal Kasus</v-list-tile-title></v-list-tile-content></v-list-tile>
         <v-list-tile @click="routerGoto('UserManager')" v-if="role == 'admin'"><v-list-tile-action><v-icon>group </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Menejemen Peserta</v-list-tile-title></v-list-tile-content></v-list-tile>
-        <v-list-tile @click="routerGoto('QuizManager')" v-if="role == 'admin'"><v-list-tile-action><v-icon>group </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Menejemen Kuis</v-list-tile-title></v-list-tile-content></v-list-tile>
-        <v-list-tile @click="routerGoto('Quiz')"><v-list-tile-action><v-icon>group </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Kuis</v-list-tile-title></v-list-tile-content></v-list-tile>
+        <v-list-tile @click="routerGoto('QuizManager')" v-if="role == 'admin'"><v-list-tile-action><v-icon>question_answer </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Menejemen Kuis</v-list-tile-title></v-list-tile-content></v-list-tile>
+        <v-list-tile @click="routerGoto('Quiz')"><v-list-tile-action><v-icon>contact_support </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Kuis</v-list-tile-title></v-list-tile-content></v-list-tile>
         <v-list-tile @click="routerGoto('changePassword')"><v-list-tile-action><v-icon>lock </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Password</v-list-tile-title></v-list-tile-content></v-list-tile>
         <v-list-tile @click="routerGoto('logoutDialog')"><v-list-tile-action><v-icon>power_settings_new </v-icon></v-list-tile-action><v-list-tile-content><v-list-tile-title>Keluar</v-list-tile-title></v-list-tile-content></v-list-tile>
       </v-list>
@@ -71,6 +74,7 @@
         logoutDialog: false,
         drawer: true,
         mini: false,
+        username: localStorage.getItem('username'),
         items: [
           { title: 'Home', icon: 'dashboard', click: 'changePassword' },
           { title: 'Peserta', icon: 'group', click: 'UserManager' },

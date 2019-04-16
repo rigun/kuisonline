@@ -15,7 +15,7 @@ class CreateQuizCompetitionsTable extends Migration
     {
         Schema::create('quiz_competitions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('quiz');
+            $table->text('quiz');
             $table->integer('value');
             $table->timestamps();
         });

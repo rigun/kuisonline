@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="contentlist">
         <div class="columns">
             <div class="column">
                 <div class="column">

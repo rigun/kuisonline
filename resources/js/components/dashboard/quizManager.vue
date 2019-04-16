@@ -3,10 +3,11 @@
   <div class="flex-container" >
     <div class="columns m-t-10">
       <div class="column">
-        <h1 class="title">Quiz Manager</h1>
+        <h1 class="title">Manajemen Kuis</h1>
       </div>
       <div class="column" style="display:flex">
-        <a class="button is-success" style="margin-left: auto; margin-right: 10px;" @click.prevent="editDialog = true; inputType = 'new'">Add Quiz</a>
+        <a class="button is-warning" style="margin-left: auto; margin-right: 5px" @click.prevent="startKuis()">Mulai Kuis</a>
+        <a class="button is-success" style="margin-right: 10px;" @click.prevent="editDialog = true; inputType = 'new'">Tambahkan Kuis</a>
       </div>
       </div>
        <nav class="level">
@@ -37,7 +38,7 @@
                 <b-table-column label="Jumlah Opsi" sortable>{{ props.row.option.length }}</b-table-column>
                 <b-table-column label="Option" sortable>
                   <v-btn @click="gotoRoute(props.row.id)" color="blue" dark>
-                    Detail Opsi
+                    Manajemen Opsi
                   </v-btn>
                 </b-table-column>
                 <b-table-column field="created_at" label="Created at" sortable>{{ props.row.created_at }}</b-table-column>
@@ -185,7 +186,7 @@ export default {
       },
         computed:{
             quizsList(){
-                if(this.quizs.length){
+                if(this.quizs.length > 0){
                     return this.quizs.filter((row, index) => {
                             if(this.search != '') return row.name.toLowerCase().includes(this.search.toLowerCase()) || row.quiz.toLowerCase().includes(this.search.toLowerCase()) || row.token.toLowerCase().includes(this.search.toLowerCase());  //menampilkan data data yang memiliki kemiripan nama dengan variable search yang diinputkan        
                             return true;
@@ -194,6 +195,17 @@ export default {
             }
         },
         methods:{
+          startKuis(){
+            var config = {
+              headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+              }
+            }
+            var uri = '/api/startquiz'
+            axios.get(uri,config).then(response =>{
+              this.$router.push({name: 'UserManager'})
+            })
+          },
           gotoRoute(id){
             this.$router.push({name: 'OptionManager', params: {id : id}})
           },

@@ -32,20 +32,26 @@
         <b-table :data="usersList" :paginated="true" :per-page="perPage" :current-page.sync="currentPage" :loading="loadData" :pagination-simple="true" :narrowed="true" :mobile-cards="true" :striped="true" :hoverable="true" :default-sort-direction="defaultSortDirection" default-sort="created_at">
             <template slot-scope="props">
                 <b-table-column label="No." sortable>{{ props.index + 1 }}</b-table-column>
-                <b-table-column field="Username" label="Username" sortable>{{ props.row.username }}</b-table-column>
-                <b-table-column field="created_at" label="Created at" sortable>{{ props.row.created_at }}</b-table-column>
-                 <b-table-column field="status" label="Jumlah Kesempatan" sortable>
-                     {{props.row.status}}
+                <b-table-column field="user.username" label="Username" sortable>{{ props.row.user.username }}</b-table-column>
+                <b-table-column field="nilai" label="Nilai" sortable centered>{{ props.row.nilai }}</b-table-column>
+                <b-table-column field="created_at" label="Mendaftar pada" sortable>{{ props.row.user.created_at }}</b-table-column>
+                 <b-table-column field="status" label="Jumlah Kesempatan" sortable centered>
+                     {{props.row.user.status}}
+                </b-table-column>
+                <b-table-column label="Option" sortable centered>
+                  <v-btn @click="gotoRoute(props.row.user.id)" color="blue" dark>
+                    Hasil Pengerjaan
+                  </v-btn>
                 </b-table-column>
                             <b-table-column label=""><v-menu transition="slide-x-transition" bottom>
                                 <v-btn slot="activator" icon >
                                 <v-icon>more_vert</v-icon>
                                 </v-btn>
                             <v-list>
-                            <v-list-tile  @click.prevent="setEditData(props.row); editDialog = true; inputType = 'edit'">
+                            <v-list-tile  @click.prevent="setEditData(props.row.user); editDialog = true; inputType = 'edit'">
                                 <v-list-tile-title  >Edit</v-list-tile-title>
                             </v-list-tile>
-                            <v-list-tile @click.prevent="deleteId = props.row.id; deleteDialog = true" >
+                            <v-list-tile @click.prevent="deleteId = props.row.user.id; deleteDialog = true" >
                                 <v-list-tile-title >Delete</v-list-tile-title>
                             </v-list-tile>
                             </v-list>
@@ -190,6 +196,9 @@ export default {
             }
         },
         methods:{
+          gotoRoute(id){
+            this.$router.push({name: 'Result', params: {id: id}})
+          },
           cekEmail(){ //mengecek username yang dimasukkan
               axios.get('/api/username/'+this.editData.username).then(response =>{
                   if(response.data.length > 0){ // apabila data tidak kosong, maka akan dicocokan dengan variable yang disediakan

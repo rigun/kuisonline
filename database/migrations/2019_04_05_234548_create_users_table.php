@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('role_id')
                 ->references('id')->on('roles')
                 ->onDelete('cascade');
-            $table->integer('status')->default(3);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

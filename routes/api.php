@@ -20,7 +20,6 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('/user', 'UserController@getAuthenticatedUser');
     Route::get('/', 'UserController@index');
     Route::post('/changepassword/{id}', 'UserController@updatePassword');
-    Route::get('/alluser', 'UserController@index');
     Route::get('/myrole', 'UserController@getRole');
     Route::post('/user', 'UserController@store');
     Route::patch('/user/{id}', 'UserController@update');
@@ -45,8 +44,20 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::patch('/option/{id}', 'OptionsQuizController@update');
     Route::delete('/option/{id}', 'OptionsQuizController@destroy');
 
+    Route::get('/startquiz', 'UserResultController@startquiz');
     Route::get('/showquiz', 'UserResultController@show');
+    Route::get('/showquiz/{id}', 'UserResultController@showQuiz');
     Route::post('/answer', 'UserResultController@store');
+    Route::get('/alluser', 'UserResultController@index');
+
+    Route::get('/kasus','CaseCompetitionController@index');
+    Route::get('/onkasus','CaseCompetitionController@onkasus');
+    Route::get('/kasus/{id}','CaseCompetitionController@show');
+    Route::post('/kasus','CaseCompetitionController@store');
+    Route::post('/kasus/{id}','CaseCompetitionController@update');
+    Route::post('/kasus/status/{id}','CaseCompetitionController@updateStatus');
+    Route::delete('/kasus/{id}','CaseCompetitionController@destroy');
+
 });
 Route::get('/username/{username}', 'UserController@username');
 

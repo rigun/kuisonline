@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\OptionsQuiz;
+use App\QuizCompetition;
+
 class OptionsQuizController extends Controller
 {
     public function index(){
         return OptionsQuiz::all();
     }
     public function show($id){
-        return OptionsQuiz::where('quiz_id',$id)->get()->makeVisible('status')->toArray();
+        $quiz = QuizCompetition::find($id);
+        $opsi =  OptionsQuiz::where('quiz_id',$id)->get()->makeVisible('status')->toArray();
+        return response()->json(['Quiz'=> $quiz, 'Opsi' => $opsi]);
     }
     public function store(Request $request){
         $this->validateWith([

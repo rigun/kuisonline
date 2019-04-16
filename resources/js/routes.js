@@ -14,6 +14,12 @@ import UserManager from './components/dashboard/userManager.vue'
 import QuizManager from './components/dashboard/quizManager.vue'
 import OptionManager from './components/dashboard/optionManager.vue'
 import Quiz from './components/dashboard/attemptQuiz.vue'
+import MainView from './components/dashboard/mainView.vue'
+import ManageCase from './components/dashboard/caseManager.vue';
+import FormCase from './components/dashboard/formCase.vue';
+import EditFormCase from './components/dashboard/editCase.vue';
+import Result from './components/dashboard/showResult.vue';
+
 const routes = [
     {
         name: 'LoginLayout',
@@ -26,11 +32,15 @@ const routes = [
         component: Logout,
     },
     {
-        name: 'DashboardContent',
         path: '/',
         component: DashboardLayout,
         meta: { requiresAuth: true },
         children: [
+            {
+                name: 'DashboardContent',
+                path: '',
+                component: MainView
+            },
             {
                 name: 'changePassword',
                 path: 'changepassword',
@@ -40,6 +50,11 @@ const routes = [
                 name: 'UserManager',
                 path: 'usermanager',
                 component: UserManager
+            },
+            {
+                name: 'Result',
+                path: 'usermanager/:id',
+                component: Result
             },
             {
                 name: 'QuizManager',
@@ -55,6 +70,21 @@ const routes = [
                 name: 'Quiz',
                 path: 'quiz',
                 component: Quiz
+            },
+            {
+                name: 'manageCase',
+                path: 'kasus',
+                component: ManageCase
+            },
+            {
+                name: 'formCase',
+                path: 'kasus/form',
+                component: FormCase
+            },
+            {
+                name: 'editFormCase',
+                path: 'kasus/form/:id',
+                component: EditFormCase
             }
         ]
     },

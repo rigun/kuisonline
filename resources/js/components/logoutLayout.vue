@@ -10,6 +10,7 @@
             localStorage.removeItem('role')
             localStorage.removeItem('status')
             localStorage.removeItem('id')
+            localStorage.removeItem('username')
             store.commit('logoutUser')
             this.$router.push({ name: 'LoginLayout' })
         }

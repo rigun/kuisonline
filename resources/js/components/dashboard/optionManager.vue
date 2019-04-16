@@ -3,7 +3,7 @@
   <div class="flex-container" >
     <div class="columns m-t-10">
       <div class="column">
-        <h1 class="title">Opsi Manager</h1>
+        <h1 class="title">Opsi Manager</h1> untuk soal {{quiz.quiz}}
       </div>
       <div class="column" style="display:flex">
         <a class="button is-success" style="margin-left: auto; margin-right: 10px;" @click.prevent="editDialog = true; inputType = 'new'">Add Opsi</a>
@@ -161,6 +161,7 @@ export default {
             status: 0,
             quiz_id: -1
           },
+          quiz: {},
           deleteId: -1,
           loading : false,
           loadData:true,
@@ -206,8 +207,9 @@ export default {
             }
             uri = '/api/option/' + this.$route.params.id
             axios.get(uri,config).then(response =>{
-              this.options = response.data;
-              this.loadData = false;
+              this.options = response.data.Opsi
+              this.quiz = response.data.Quiz
+              this.loadData = false
             })
           },
           sendData(){

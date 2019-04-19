@@ -7,6 +7,7 @@
       </div>
       <div class="column" style="display:flex">
         <a class="button is-warning" style="margin-left: auto; margin-right: 5px" @click.prevent="startKuis()">Mulai Kuis</a>
+        <a class="button is-warning" style="margin-left: auto; margin-right: 5px" @click.prevent="endKuis()">Tutup Kuis</a>
         <a class="button is-success" style="margin-right: 10px;" @click.prevent="editDialog = true; inputType = 'new'">Tambahkan Kuis</a>
       </div>
       </div>
@@ -202,6 +203,17 @@ export default {
               }
             }
             var uri = '/api/startquiz'
+            axios.get(uri,config).then(response =>{
+              this.$router.push({name: 'UserManager'})
+            })
+          },
+          endKuis(){
+            var config = {
+              headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+              }
+            }
+            var uri = '/api/endquiz'
             axios.get(uri,config).then(response =>{
               this.$router.push({name: 'UserManager'})
             })

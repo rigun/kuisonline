@@ -45,6 +45,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::delete('/option/{id}', 'OptionsQuizController@destroy');
 
     Route::get('/startquiz', 'UserResultController@startquiz');
+    Route::get('/endquiz', 'UserResultController@endquiz');
     Route::get('/showquiz', 'UserResultController@show');
     Route::get('/showquiz/{id}', 'UserResultController@showQuiz');
     Route::post('/answer', 'UserResultController@store');

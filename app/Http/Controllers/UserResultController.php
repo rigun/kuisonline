@@ -49,6 +49,19 @@ class UserResultController extends Controller
         }
         return 'Berhasil';
     }
+    public function endquiz(){
+        $userController = new UserController();
+        if($userController->getRole() != 'admin'){
+            return 'Gagal';
+        }
+        $user = User::all();
+        foreach($user as $us){
+            $setUser = User::find($us->id);
+            $setUser->status = 0;
+            $setUser->save();
+        }
+        return 'Berhasil';
+    }
     public function showQuiz($id){
         $userController = new UserController();
         if($userController->getRole() != 'admin'){

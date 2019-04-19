@@ -3935,6 +3935,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getData();
@@ -4016,6 +4017,21 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
+    endKuis: function endKuis() {
+      var _this3 = this;
+
+      var config = {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
+      };
+      var uri = '/api/endquiz';
+      axios.get(uri, config).then(function (response) {
+        _this3.$router.push({
+          name: 'UserManager'
+        });
+      });
+    },
     gotoRoute: function gotoRoute(id) {
       this.$router.push({
         name: 'OptionManager',
@@ -4030,7 +4046,7 @@ __webpack_require__.r(__webpack_exports__);
       this.editData.value = data.value;
     },
     getData: function getData() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.deleteDialog = false;
       this.editDialog = false;
@@ -4044,12 +4060,12 @@ __webpack_require__.r(__webpack_exports__);
       };
       uri = '/api/quiz';
       axios.get(uri, config).then(function (response) {
-        _this3.quizs = response.data;
-        _this3.loadData = false;
+        _this4.quizs = response.data;
+        _this4.loadData = false;
       });
     },
     sendData: function sendData() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (!this.$refs.form.validate()) {
         this.snackbar = true;
@@ -4071,19 +4087,19 @@ __webpack_require__.r(__webpack_exports__);
       };
       uri = '/api/quiz';
       axios.post(uri, this.editData, config).then(function (response) {
-        _this4.snackbar = true;
-        _this4.text = 'Success';
-        _this4.color = 'green';
+        _this5.snackbar = true;
+        _this5.text = 'Success';
+        _this5.color = 'green';
 
-        _this4.getData();
+        _this5.getData();
       })["catch"](function (error) {
-        _this4.snackbar = true;
-        _this4.text = 'Try Again';
-        _this4.color = 'red';
+        _this5.snackbar = true;
+        _this5.text = 'Try Again';
+        _this5.color = 'red';
       });
     },
     deleteData: function deleteData() {
-      var _this5 = this;
+      var _this6 = this;
 
       var uri;
       var config = {
@@ -4093,19 +4109,19 @@ __webpack_require__.r(__webpack_exports__);
       };
       uri = '/api/quiz/' + this.deleteId;
       axios["delete"](uri, config).then(function (response) {
-        _this5.snackbar = true;
-        _this5.text = 'Data berhasil dihapus';
-        _this5.color = 'green';
+        _this6.snackbar = true;
+        _this6.text = 'Data berhasil dihapus';
+        _this6.color = 'green';
 
-        _this5.getData();
+        _this6.getData();
       })["catch"](function (error) {
-        _this5.snackbar = true;
-        _this5.text = 'Coba Lagi';
-        _this5.color = 'red';
+        _this6.snackbar = true;
+        _this6.text = 'Coba Lagi';
+        _this6.color = 'red';
       });
     },
     UpdateData: function UpdateData() {
-      var _this6 = this;
+      var _this7 = this;
 
       if (!this.$refs.form.validate()) {
         this.snackbar = true;
@@ -4123,17 +4139,17 @@ __webpack_require__.r(__webpack_exports__);
       };
       uri = '/api/quiz/' + this.editData.id;
       axios.patch(uri, this.editData, config).then(function (response) {
-        _this6.snackbar = true;
-        _this6.text = 'Success';
-        _this6.color = 'green';
-        _this6.load = false;
+        _this7.snackbar = true;
+        _this7.text = 'Success';
+        _this7.color = 'green';
+        _this7.load = false;
 
-        _this6.getData();
+        _this7.getData();
       })["catch"](function (error) {
-        _this6.snackbar = true;
-        _this6.text = 'Try Again';
-        _this6.color = 'red';
-        _this6.load = false;
+        _this7.snackbar = true;
+        _this7.text = 'Try Again';
+        _this7.color = 'red';
+        _this7.load = false;
       });
     }
   }
@@ -58191,6 +58207,21 @@ var render = function() {
                   }
                 },
                 [_vm._v("Mulai Kuis")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "button is-warning",
+                  staticStyle: { "margin-left": "auto", "margin-right": "5px" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.endKuis()
+                    }
+                  }
+                },
+                [_vm._v("Tutup Kuis")]
               ),
               _vm._v(" "),
               _c(

@@ -58197,7 +58197,7 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "button is-warning",
+                  staticClass: "button is-primary",
                   staticStyle: { "margin-left": "auto", "margin-right": "5px" },
                   on: {
                     click: function($event) {
@@ -58212,8 +58212,8 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "button is-warning",
-                  staticStyle: { "margin-left": "auto", "margin-right": "5px" },
+                  staticClass: "button is-error",
+                  staticStyle: { "margin-right": "5px" },
                   on: {
                     click: function($event) {
                       $event.preventDefault()

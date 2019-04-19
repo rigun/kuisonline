@@ -28,7 +28,6 @@
                 <b-table-column label="No." sortable>{{ props.index + 1 }}</b-table-column>
                 <b-table-column field="quiz" label="Soal" sortable>{{ props.row.quiz.quiz }}</b-table-column>
                 <b-table-column field="value" label="Bobot" sortable>{{ props.row.quiz.value }}</b-table-column>
-                <b-table-column field="jawaban" label="Jawaban" sortable>{{ props.row.option.option }}</b-table-column>
                 <b-table-column label="Keterangan" sortable>
                     <v-chip v-if="props.row.status == 1" color="green" dark>Benar</v-chip>
                     <v-chip v-if="props.row.status == 0" color="red" dark>Salah</v-chip>

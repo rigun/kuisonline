@@ -2502,7 +2502,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getData();
@@ -56392,18 +56391,6 @@ var render = function() {
                                   }
                                 },
                                 [_vm._v(_vm._s(props.row.quiz.value))]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-table-column",
-                                {
-                                  attrs: {
-                                    field: "jawaban",
-                                    label: "Jawaban",
-                                    sortable: ""
-                                  }
-                                },
-                                [_vm._v(_vm._s(props.row.option.option))]
                               ),
                               _vm._v(" "),
                               _c(

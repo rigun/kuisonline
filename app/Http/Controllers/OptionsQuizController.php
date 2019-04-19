@@ -39,7 +39,7 @@ class OptionsQuizController extends Controller
             'option' => 'required',
             'status' => 'required'
         ]);
-        if($oldOpsi = OptionsQuiz::where([['status',1],['quiz_id',$request->quiz_id],['id','!=',$id]])->first() && $request->status == 1){
+        if(($oldOpsi = OptionsQuiz::where([['status',1],['quiz_id',$request->quiz_id],['id','!=',$id]])->first()) && $request->status == 1){
             $oldOpsi->status = 0;
             $oldOpsi->save();
         }

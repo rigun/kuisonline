@@ -52,9 +52,6 @@
     right: 0;
     top: 66px;
 }
-.soalKasus p{
-    display: flex;
-}
 .soalKasus img{
     margin: auto;
 }

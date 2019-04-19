@@ -3317,9 +3317,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -17139,7 +17136,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.timeBox{\r\n    text-align: right;\r\n    width: 100%;\r\n    padding: 7px 13px;\r\n    font-size: 24px;\r\n    color: green;\r\n    background: greenyellow;\r\n    position: fixed;\r\n    z-index: 100000;\r\n    right: 0;\r\n    top: 66px;\n}\n.soalKasus p{\r\n    display: flex;\n}\n.soalKasus img{\r\n    margin: auto;\n}\n.lock{\r\n    background: white;\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    opacity: 0;\n}\n.background-ma2019{\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    opacity: 0.1;\r\n    background: url('/images/LOGO MC BARU BG TERANG.png');\r\n    background-size: 100%;\r\n    background-position: center;\r\n    margin-top: 209px;\r\n    margin-left: 17px;\r\n    margin-right: 17px;\n}\n.card{\r\n  position: relative\n}\r\n", ""]);
+exports.push([module.i, "\n.timeBox{\r\n    text-align: right;\r\n    width: 100%;\r\n    padding: 7px 13px;\r\n    font-size: 24px;\r\n    color: green;\r\n    background: greenyellow;\r\n    position: fixed;\r\n    z-index: 100000;\r\n    right: 0;\r\n    top: 66px;\n}\n.soalKasus img{\r\n    margin: auto;\n}\n.lock{\r\n    background: white;\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    opacity: 0;\n}\n.background-ma2019{\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    opacity: 0.1;\r\n    background: url('/images/LOGO MC BARU BG TERANG.png');\r\n    background-size: 100%;\r\n    background-position: center;\r\n    margin-top: 209px;\r\n    margin-left: 17px;\r\n    margin-right: 17px;\n}\n.card{\r\n  position: relative\n}\r\n", ""]);
 
 // exports
 

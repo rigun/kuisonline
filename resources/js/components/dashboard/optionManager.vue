@@ -277,6 +277,7 @@ export default {
                       Authorization: 'Bearer ' + localStorage.getItem('token')
                   }
                 }
+            this.editData.quiz_id = this.$route.params.id
             uri = '/api/option/'+this.editData.id;
             axios.patch(uri,this.editData,config).then(response =>{
                    this.snackbar = true;

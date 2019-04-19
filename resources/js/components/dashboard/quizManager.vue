@@ -6,8 +6,8 @@
         <h1 class="title">Manajemen Kuis</h1>
       </div>
       <div class="column" style="display:flex">
-        <a class="button is-primary" style="margin-left: auto; margin-right: 5px" @click.prevent="startKuis()">Mulai Kuis</a>
-        <a class="button is-error" style="margin-right: 5px" @click.prevent="endKuis()">Tutup Kuis</a>
+        <a class="button is-info" style="margin-left: auto; margin-right: 5px" @click.prevent="startKuis()">Mulai Kuis</a>
+        <a class="button is-warning" style="margin-right: 5px" @click.prevent="endKuis()">Tutup Kuis</a>
         <a class="button is-success" style="margin-right: 10px;" @click.prevent="editDialog = true; inputType = 'new'">Tambahkan Kuis</a>
       </div>
       </div>

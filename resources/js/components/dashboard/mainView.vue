@@ -1,7 +1,8 @@
 <template>
 <div class="card" style="margin-bottom: 30px;">
         <p class="timeBox" v-if="cases != ''">
-        {{cases.title}} - {{hours}}:{{minutes}}:{{seconds}}
+        <!-- {{cases.title}} - {{hours}}:{{minutes}}:{{seconds}} -->
+        {{cases.title}}
     </p>
 
     <div class="lock">
@@ -15,7 +16,7 @@
                 <img src="/images/LOGO HMPSM BARU.png" alt="" style="width: 150px; align-self: center;">
             </div>
             <div class="column" style="text-align:center">
-                MANAGEMENT ACTION 2019 <br/>
+                MANAGEMENT COMPETITION 2019 <br/>
                 HIMPUNAN MAHASISWA PROGRAM STUDI MANAJEMEN <br/>
                         FAKULTAS BISNIS DAN EKONOMIKA <br/>
                 UNIVERSITAS ATMA JAYA YOGYAKARTA <br/>
@@ -73,7 +74,7 @@
     bottom: 0;
     left: 0;
     opacity: 0.1;
-    background: url('/images/logo.png');
+    background: url('/images/LOGO MC BARU BG TERANG.png');
     background-size: 100%;
     background-position: center;
     margin-top: 209px;
@@ -115,40 +116,40 @@ export default {
       perPage: 10,
     }
   },
-  computed:{
-        seconds() {
-            var s;
-            s = (this.date - this.now) % 60
-            if(s > -1){
-                return this.twoDigit(s);
-            }else{
-                return '00';
-            }
-        },
+  // computed:{
+  //       seconds() {
+  //           var s;
+  //           s = (this.date - this.now) % 60
+  //           if(s > -1){
+  //               return this.twoDigit(s);
+  //           }else{
+  //               return '00';
+  //           }
+  //       },
 
-        minutes() {
-            var m;
-            m = Math.trunc((this.date - this.now) / 60) % 60
-            if(m > -1){
-                return this.twoDigit(m);
-            }else{
-                return '00';
-            }
-        },
+  //       minutes() {
+  //           var m;
+  //           m = Math.trunc((this.date - this.now) / 60) % 60
+  //           if(m > -1){
+  //               return this.twoDigit(m);
+  //           }else{
+  //               return '00';
+  //           }
+  //       },
 
-        hours() {
-            var h;
-            h = Math.trunc((this.date - this.now) / 60 / 60) % 24
-            if(h > -1){
-                return this.twoDigit(h);
-            }else{
-                return '00';
-            }
-        },
-    },
-     destroyed(){
-            clearInterval(this.interval);
-        },
+  //       hours() {
+  //           var h;
+  //           h = Math.trunc((this.date - this.now) / 60 / 60) % 24
+  //           if(h > -1){
+  //               return this.twoDigit(h);
+  //           }else{
+  //               return '00';
+  //           }
+  //       },
+  //   },
+  //    destroyed(){
+  //           clearInterval(this.interval);
+  //       },
   methods: {
     goto (name) {
       this.$router.push({name: name})
@@ -156,29 +157,27 @@ export default {
     update(id){
       this.$router.push({name: 'editFormCase',params:{id: id}})
     },
-      twoDigit(value){
-            if(value.toString().length <= 1)
-                {
-                    return "0"+value.toString();
-                }
-                return value.toString();
-        },
-         countDown(date){
-            this.date = Math.trunc(Date.parse(moment(date).add(60, 'm')) / 1000)
-            this.now = Math.trunc((new Date()).getTime() / 1000);
-
-            if(this.date - this.now > 0){
-                this.interval = setInterval(() => {
-                    if(this.date - this.now > 0){
-                      console.log('interval')
-                        this.now = Math.trunc((new Date()).getTime() / 1000);
-                    }else{
-                        this.updateStatus(this.cases.id,0);
-                    }
-                },1000);
-            }
-
-        },
+      // twoDigit(value){
+      //       if(value.toString().length <= 1)
+      //           {
+      //               return "0"+value.toString();
+      //           }
+      //           return value.toString();
+      //   },
+        //  countDown(date){
+        //     this.date = Math.trunc(Date.parse(moment(date).add(60, 'm')) / 1000)
+        //     this.now = Math.trunc((new Date()).getTime() / 1000);
+        //     if(this.date - this.now > 0){
+        //         this.interval = setInterval(() => {
+        //             if(this.date - this.now > 0){
+        //               console.log('interval')
+        //                 this.now = Math.trunc((new Date()).getTime() / 1000);
+        //             }else{
+        //                 this.updateStatus(this.cases.id,0);
+        //             }
+        //         },1000);
+        //     }
+        // },
     getData () {
       this.editDialog = false
       this.deleteDialog = false
@@ -191,9 +190,9 @@ export default {
       uri = '/api/onkasus'
       axios.get(uri, config).then(response => {
         this.cases = response.data
-        if(this.cases != ''){
-            this.countDown(response.data.updated_at)
-        }
+        // if(this.cases != ''){
+        //     this.countDown(response.data.updated_at)
+        // }
         this.loadData = false
       })
     },

@@ -3319,6 +3319,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -3347,41 +3348,38 @@ __webpack_require__.r(__webpack_exports__);
       perPage: 10
     };
   },
-  computed: {
-    seconds: function seconds() {
-      var s;
-      s = (this.date - this.now) % 60;
-
-      if (s > -1) {
-        return this.twoDigit(s);
-      } else {
-        return '00';
-      }
-    },
-    minutes: function minutes() {
-      var m;
-      m = Math.trunc((this.date - this.now) / 60) % 60;
-
-      if (m > -1) {
-        return this.twoDigit(m);
-      } else {
-        return '00';
-      }
-    },
-    hours: function hours() {
-      var h;
-      h = Math.trunc((this.date - this.now) / 60 / 60) % 24;
-
-      if (h > -1) {
-        return this.twoDigit(h);
-      } else {
-        return '00';
-      }
-    }
-  },
-  destroyed: function destroyed() {
-    clearInterval(this.interval);
-  },
+  // computed:{
+  //       seconds() {
+  //           var s;
+  //           s = (this.date - this.now) % 60
+  //           if(s > -1){
+  //               return this.twoDigit(s);
+  //           }else{
+  //               return '00';
+  //           }
+  //       },
+  //       minutes() {
+  //           var m;
+  //           m = Math.trunc((this.date - this.now) / 60) % 60
+  //           if(m > -1){
+  //               return this.twoDigit(m);
+  //           }else{
+  //               return '00';
+  //           }
+  //       },
+  //       hours() {
+  //           var h;
+  //           h = Math.trunc((this.date - this.now) / 60 / 60) % 24
+  //           if(h > -1){
+  //               return this.twoDigit(h);
+  //           }else{
+  //               return '00';
+  //           }
+  //       },
+  //   },
+  //    destroyed(){
+  //           clearInterval(this.interval);
+  //       },
   methods: {
     "goto": function goto(name) {
       this.$router.push({
@@ -3396,32 +3394,29 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    twoDigit: function twoDigit(value) {
-      if (value.toString().length <= 1) {
-        return "0" + value.toString();
-      }
-
-      return value.toString();
-    },
-    countDown: function countDown(date) {
-      var _this = this;
-
-      this.date = Math.trunc(Date.parse(moment__WEBPACK_IMPORTED_MODULE_0___default()(date).add(60, 'm')) / 1000);
-      this.now = Math.trunc(new Date().getTime() / 1000);
-
-      if (this.date - this.now > 0) {
-        this.interval = setInterval(function () {
-          if (_this.date - _this.now > 0) {
-            console.log('interval');
-            _this.now = Math.trunc(new Date().getTime() / 1000);
-          } else {
-            _this.updateStatus(_this.cases.id, 0);
-          }
-        }, 1000);
-      }
-    },
+    // twoDigit(value){
+    //       if(value.toString().length <= 1)
+    //           {
+    //               return "0"+value.toString();
+    //           }
+    //           return value.toString();
+    //   },
+    //  countDown(date){
+    //     this.date = Math.trunc(Date.parse(moment(date).add(60, 'm')) / 1000)
+    //     this.now = Math.trunc((new Date()).getTime() / 1000);
+    //     if(this.date - this.now > 0){
+    //         this.interval = setInterval(() => {
+    //             if(this.date - this.now > 0){
+    //               console.log('interval')
+    //                 this.now = Math.trunc((new Date()).getTime() / 1000);
+    //             }else{
+    //                 this.updateStatus(this.cases.id,0);
+    //             }
+    //         },1000);
+    //     }
+    // },
     getData: function getData() {
-      var _this2 = this;
+      var _this = this;
 
       this.editDialog = false;
       this.deleteDialog = false;
@@ -3433,17 +3428,15 @@ __webpack_require__.r(__webpack_exports__);
       };
       uri = '/api/onkasus';
       axios.get(uri, config).then(function (response) {
-        _this2.cases = response.data;
+        _this.cases = response.data; // if(this.cases != ''){
+        //     this.countDown(response.data.updated_at)
+        // }
 
-        if (_this2.cases != '') {
-          _this2.countDown(response.data.updated_at);
-        }
-
-        _this2.loadData = false;
+        _this.loadData = false;
       });
     },
     updateStatus: function updateStatus(id, status) {
-      var _this3 = this;
+      var _this2 = this;
 
       var config = {
         headers: {
@@ -3456,9 +3449,9 @@ __webpack_require__.r(__webpack_exports__);
       }, config).then(function (response) {
         location.reload();
       })["catch"](function (error) {
-        _this3.snackbar = true;
-        _this3.text = 'Coba lagi';
-        _this3.color = 'red';
+        _this2.snackbar = true;
+        _this2.text = 'Coba lagi';
+        _this2.color = 'red';
       });
     }
   }
@@ -17129,7 +17122,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.timeBox{\r\n    text-align: right;\r\n    width: 100%;\r\n    padding: 7px 13px;\r\n    font-size: 24px;\r\n    color: green;\r\n    background: greenyellow;\r\n    position: fixed;\r\n    z-index: 100000;\r\n    right: 0;\r\n    top: 66px;\n}\n.soalKasus p{\r\n    display: flex;\n}\n.soalKasus img{\r\n    margin: auto;\n}\n.lock{\r\n    background: white;\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    opacity: 0;\n}\n.background-ma2019{\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    opacity: 0.1;\r\n    background: url('/images/logo.png');\r\n    background-size: 100%;\r\n    background-position: center;\r\n    margin-top: 209px;\r\n    margin-left: 17px;\r\n    margin-right: 17px;\n}\n.card{\r\n  position: relative\n}\r\n", ""]);
+exports.push([module.i, "\n.timeBox{\r\n    text-align: right;\r\n    width: 100%;\r\n    padding: 7px 13px;\r\n    font-size: 24px;\r\n    color: green;\r\n    background: greenyellow;\r\n    position: fixed;\r\n    z-index: 100000;\r\n    right: 0;\r\n    top: 66px;\n}\n.soalKasus p{\r\n    display: flex;\n}\n.soalKasus img{\r\n    margin: auto;\n}\n.lock{\r\n    background: white;\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    opacity: 0;\n}\n.background-ma2019{\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    opacity: 0.1;\r\n    background: url('/images/LOGO MC BARU BG TERANG.png');\r\n    background-size: 100%;\r\n    background-position: center;\r\n    margin-top: 209px;\r\n    margin-left: 17px;\r\n    margin-right: 17px;\n}\n.card{\r\n  position: relative\n}\r\n", ""]);
 
 // exports
 
@@ -57469,17 +57462,7 @@ var render = function() {
     [
       _vm.cases != ""
         ? _c("p", { staticClass: "timeBox" }, [
-            _vm._v(
-              "\r\n        " +
-                _vm._s(_vm.cases.title) +
-                " - " +
-                _vm._s(_vm.hours) +
-                ":" +
-                _vm._s(_vm.minutes) +
-                ":" +
-                _vm._s(_vm.seconds) +
-                "\r\n    "
-            )
+            _vm._v("\r\n        " + _vm._s(_vm.cases.title) + "\r\n    ")
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -57538,7 +57521,7 @@ var staticRenderFns = [
         "div",
         { staticClass: "column", staticStyle: { "text-align": "center" } },
         [
-          _vm._v("\r\n                MANAGEMENT ACTION 2019 "),
+          _vm._v("\r\n                MANAGEMENT COMPETITION 2019 "),
           _c("br"),
           _vm._v(
             "\r\n                HIMPUNAN MAHASISWA PROGRAM STUDI MANAJEMEN "

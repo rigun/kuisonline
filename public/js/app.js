@@ -3319,9 +3319,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
+    var _this = this;
+
     this.getData();
     Echo.channel('caseChannel').listen('CaseClosed', function (data) {
-      location.reload();
+      _this.cases = "";
     });
   },
   data: function data() {
@@ -3415,7 +3417,7 @@ __webpack_require__.r(__webpack_exports__);
     //     }
     // },
     getData: function getData() {
-      var _this = this;
+      var _this2 = this;
 
       this.editDialog = false;
       this.deleteDialog = false;
@@ -3427,12 +3429,12 @@ __webpack_require__.r(__webpack_exports__);
       };
       uri = '/api/onkasus';
       axios.get(uri, config).then(function (response) {
-        _this.cases = response.data;
-        _this.loadData = false;
+        _this2.cases = response.data;
+        _this2.loadData = false;
       });
     },
     updateStatus: function updateStatus(id, status) {
-      var _this2 = this;
+      var _this3 = this;
 
       var config = {
         headers: {
@@ -3445,9 +3447,9 @@ __webpack_require__.r(__webpack_exports__);
       }, config).then(function (response) {
         location.reload();
       })["catch"](function (error) {
-        _this2.snackbar = true;
-        _this2.text = 'Coba lagi';
-        _this2.color = 'red';
+        _this3.snackbar = true;
+        _this3.text = 'Coba lagi';
+        _this3.color = 'red';
       });
     }
   }

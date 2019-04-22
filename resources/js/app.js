@@ -10,6 +10,16 @@ import Vuetify from 'vuetify';
 window.VueRouter = require('vue-router').default;
 import AppLayout from './components/appLayout.vue';
 import Editor from '@tinymce/tinymce-vue';
+import Echo from 'laravel-echo'
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: "3327b7d72b050a2a82b5",
+    cluster: "20afe9660eb4d6727e0e",
+    encrypted: true
+});
 
 Vue.use(Buefy);
 Vue.use(Vuetify);

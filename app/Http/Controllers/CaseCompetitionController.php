@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\CaseClosed;
+
 use App\CaseCompetition;
 use Purifier;
 
@@ -47,7 +49,8 @@ class CaseCompetitionController extends Controller
         ]);
         if($item = CaseCompetition::where('id',$id)->first()){
             $item->status = $request->status;
-            $item->save();    
+            $item->save(); 
+            event(new CaseClosed());   
             return response()->json(['status'=>'1','msg'=>'Status CaseCompetition berhasil diubah','result' => $item]);
         }
         return response()->json(['status'=>'0','msg'=>'CaseCompetition tidak ditemukan','result' => []]);

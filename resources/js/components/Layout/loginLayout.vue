@@ -2,7 +2,7 @@
 <div class="container loginStyle">
   <div class="background-all"></div>
     <v-layout justify-center>
-    <v-flex xs5>
+    <v-flex xs12 md5>
       <v-form ref="form" v-model="valid" lazy-validation>
       <v-card>
         <v-card-text style="text-align:center">

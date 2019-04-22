@@ -187,9 +187,10 @@ export default {
       uri = '/api/onkasus'
       axios.get(uri, config).then(response => {
         this.cases = response.data
-        // if(this.cases != ''){
-        //     this.countDown(response.data.updated_at)
-        // }
+        Echo.channel('caseChannel')
+          .listen('CaseClosed', (data) => {
+            location.reload(); 
+          });
         this.loadData = false
       })
     },

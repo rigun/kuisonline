@@ -10,10 +10,9 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
-class CaseClosed implements ShouldBroadcast
+class CaseClosed implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
     /**
      * Create a new event instance.
      *
@@ -21,7 +20,6 @@ class CaseClosed implements ShouldBroadcast
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -29,6 +27,10 @@ class CaseClosed implements ShouldBroadcast
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
+    public function broadcastAs()
+    {
+        return 'closeCase';
+    }
     public function broadcastOn()
     {
         return ['caseChannel'];

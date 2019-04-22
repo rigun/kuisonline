@@ -89,6 +89,11 @@ import moment from 'moment'
 export default {
  mounted () {
     this.getData()
+    Echo.channel('caseChannel')
+    .listen('.closeCase', (data) => {
+      console.log(data)
+      location.reload()
+    });
   },
   data () {
     return {
@@ -187,10 +192,7 @@ export default {
       uri = '/api/onkasus'
       axios.get(uri, config).then(response => {
         this.cases = response.data
-        Echo.channel('caseChannel')
-          .listen('CaseClosed', (data) => {
-            location.reload(); 
-          });
+        
         this.loadData = false
       })
     },

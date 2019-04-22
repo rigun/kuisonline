@@ -3323,6 +3323,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.getData();
     Echo.channel('caseChannel').listen('CaseClosed', function (data) {
+      console.log(data);
       _this.cases = "";
     });
   },

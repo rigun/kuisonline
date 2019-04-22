@@ -50,7 +50,7 @@ class CaseCompetitionController extends Controller
         if($item = CaseCompetition::where('id',$id)->first()){
             $item->status = $request->status;
             $item->save(); 
-            return event(new CaseClosed());
+            return event(new CaseClosed($request->status));
             return response()->json(['status'=>'1','msg'=>'Status CaseCompetition berhasil diubah','result' => $item]);
         }
         return response()->json(['status'=>'0','msg'=>'CaseCompetition tidak ditemukan','result' => []]);

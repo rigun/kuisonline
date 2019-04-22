@@ -14,20 +14,20 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 class CaseClosed implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
-    public function __construct()
+
+    protected $status;
+
+    public function __construct($status)
     {
+        $this->status = $status;
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
-     */
+    public function broadcastWith()
+    {
+        return [
+            'status' => $this->status,
+        ];
+    }
     public function broadcastOn()
     {
         return ['caseChannel'];

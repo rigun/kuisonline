@@ -111601,7 +111601,8 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_5__["default"]({
   broadcaster: 'pusher',
   key: "3327b7d72b050a2a82b5",
   cluster: "ap1",
-  encrypted: true
+  encrypted: false,
+  forceTLS: true
 });
 Vue.use(buefy__WEBPACK_IMPORTED_MODULE_0___default.a);
 Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_2___default.a);

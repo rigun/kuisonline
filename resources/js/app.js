@@ -18,7 +18,8 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     key: "3327b7d72b050a2a82b5",
     cluster: "ap1",
-    encrypted: true
+    encrypted: false,
+    forceTLS: true
 });
 
 Vue.use(Buefy);

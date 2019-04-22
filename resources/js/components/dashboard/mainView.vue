@@ -91,8 +91,11 @@ export default {
     this.getData()
     Echo.channel('caseChannel')
     .listen('CaseClosed', (data) => {
-      console.log(data)
-      this.cases = ""
+      if(data.status == 1){
+        location.reload()
+      }else{
+        this.cases = ""
+      }
     });
   },
   data () {

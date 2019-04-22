@@ -111600,7 +111600,7 @@ window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/d
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_5__["default"]({
   broadcaster: 'pusher',
   key: "3327b7d72b050a2a82b5",
-  cluster: "20afe9660eb4d6727e0e",
+  cluster: "ap1",
   encrypted: true
 });
 Vue.use(buefy__WEBPACK_IMPORTED_MODULE_0___default.a);

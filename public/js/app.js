@@ -3320,9 +3320,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getData();
-    Echo.channel('caseChannel').listen('.closeCase', function (data) {
+    Echo.channel('caseChannel').listen('CaseClosed', function (data) {
       console.log(data);
-      location.reload();
     });
   },
   data: function data() {

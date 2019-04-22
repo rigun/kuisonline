@@ -90,9 +90,8 @@ export default {
  mounted () {
     this.getData()
     Echo.channel('caseChannel')
-    .listen('.closeCase', (data) => {
+    .listen('CaseClosed', (data) => {
       console.log(data)
-      location.reload()
     });
   },
   data () {
